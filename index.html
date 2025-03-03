@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print Test</title>
+    <title>Print Test - Working</title>
     <script>
 
 
@@ -23,22 +23,33 @@
             var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
             if (document != null) {
                 WinPrint.document.write(printContents);
-                // WinPrint.document.close();
-                WinPrint.focus();
-                WinPrint.print();
+                WinPrint.document.close();
+                setTimeout(() => {
+                    WinPrint.focus();
+                    WinPrint.print();
+                }, 500);
              
             }
             //WinPrint.close();
         }
     </script>
     <style>
-      
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #printSection,
+            #printSection * {
+                visibility: visible;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <button onclick="printPage()">Print Page not</button>
+    <button onclick="printPage()">Print Page</button>
 
     <div id="printSection">
         <h1>Printable Content</h1>
