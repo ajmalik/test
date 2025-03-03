@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Test</title>
+    <script>
+
+
+        function htmlToElement(html) {
+            var template = document.createElement('template');
+            html = html.trim(); // Never return a text node of whitespace as the result
+            template.innerHTML = html;
+            return template;
+        }
+ 
+        function printPage() {
+
+            let divName = `<?xml version="1.0" encoding="utf-8"?>\n<div class="OuterDiv" style="font-size:15px;  font-family: 'Courier New'; ">\n  <div id="1" class="Centered" style="margin: 0 auto; text-align:center; background-color: white; font-family: 'Courier New';">\n    <p style="font-size : 15px; clear: both !important; font-weight:bold;">\n      <span>H&amp;R Block</span>\n    </p>\n    <p style="font-size : 15px; clear: both !important;">\n      <span>237B MOUNT HERMON RD</span>\n    </p>\n    <p style="font-size : 15px; clear: both !important;">\n      <span>SCOTTS VALLEY CA 95066</span>\n    </p>\n  </div>\n  <div id="2" class="Left" style="margin: 0px 20px ; background-color: white; font-family: 'Courier New';">\n    <table id="tabularData" style="font-family: 'Courier New';  border-collapse: collapse; width: 100%;">\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">Office: 3597</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">(831)438-1311</td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">Professional: donnelly,mary lynne</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right"></td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">Client: TEST  TESGC</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right"></td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">TaxPrep</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">159.00</td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">SubTotal</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">159.00</td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">Sales Tax</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">15.50</td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">Total</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">174.50</td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">VISA</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">174.50</td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">Change Due</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">0.00</td>\n      </tr>\n      <tr>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: left">Employee No.</td>\n        <td style="font-size: 15px; padding: 0; padding-top: 6px; padding-bottom: 6px;text-align: right">337918</td>\n      </tr>\n    </table>\n  </div>\n  <div id="3" class="Centered" style="margin: 0 auto; text-align:center; background-color: white; font-family: 'Courier New';">\n    <p style="font-size : 15px; clear: both !important;">\n      <span>Thank You for choosing </span>\n    </p>\n    <p style="font-size : 15px; clear: both !important; font-weight:bold;">\n      <span>H&amp;R Block</span>\n    </p>\n    <p style="font-size : 15px; clear: both !important;">\n      <span>for your tax services.</span>\n    </p>\n    <br />\n    <p style="font-size : 15px; clear: both !important;">\n      <span>2/26/2025  10:44:21 AM 505700000455</span>\n    </p>\n  </div>\n</div>`;
+
+            var printContents = this.htmlToElement(divName).innerHTML;
+            var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+            if (document != null) {
+                WinPrint.document.write(printContents);
+                WinPrint.document.close();
+                setTimeout(() => {
+                    WinPrint.focus();
+                    WinPrint.print();
+                }, 500);
+             
+            }
+            //WinPrint.close();
+        }
+    </script>
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #printSection,
+            #printSection * {
+                visibility: visible;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="printPage()">Print Page</button>
+
+    <div id="printSection">
+        <h1>Printable Content</h1>
+        <p>This content will be printed.</p>
+    </div>
+
+</body>
+
+</html>
