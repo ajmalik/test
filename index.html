@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print Test - Working</title>
+    <title>Print Test - Not Working</title>
     <script>
 
 
@@ -23,11 +23,10 @@
             var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
             if (document != null) {
                 WinPrint.document.write(printContents);
-                WinPrint.document.close();
-                setTimeout(() => {
-                    WinPrint.focus();
+               //  WinPrint.document.close();
+                  WinPrint.focus();
                     WinPrint.print();
-                }, 500);
+                
              
             }
             //WinPrint.close();
